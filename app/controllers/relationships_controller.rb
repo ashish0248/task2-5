@@ -27,7 +27,7 @@ class RelationshipsController < ApplicationController
   def destroy
     following = current_user.unfollow(@user)
     if following.destroy
-      flash[:success] = 'ユーザーのフォローを解除しました'
+      flash[:success] =  'ユーザーのフォローを解除しました'
       redirect_back(fallback_location: root_path)
     else
       flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'

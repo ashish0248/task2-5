@@ -11,7 +11,7 @@
 
   <body>
     <!--ヘッダーの記述-->
-    <<header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
@@ -39,9 +39,29 @@
     <!--ヘッダーの記述-->
     <div class="container">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
-
     </div>
   </body>
+  <br>
+
+         <!-- 検索機能 -->
+        <% if user_signed_in? %>
+         <%= form_tag(search_path, method: "get") do %>
+          <%= text_field_tag :keyword , params[:keyword],placeholder:"user名やbook名"%>
+          <!-- プルダウン検索バー生成 -->
+          <%= select_tag "model_name", options_for_select([["User", "ユーザー"], ["Books","ブック"]]) %>
+
+          <%= select_tag "submit_name", options_for_select([["完全一致", "完全一致"],["部分一致","部分一致"],["前方一致", "前方一致"],["後方一致","後方一致"]]) %>
+          <%= submit_tag 'Search' %>
+           <% end %>
+
+<!--               <%= form_tag(books_path, method: "get") do %>
+               <%= select_tag "model_name", options_for_select([["User", "user"], ["Books","book"]]) %>
+              <% end %>
+            <%= form_tag(books_path, method: "get") do %>
+                 <%= select_tag "submit_name", options_for_select([["完全一致", "完全一致"],["部分一致","部分一致"],["前方一致", "前方一致"],["後方一致","後方一致"]]) %>
+             <% end %> -->
+        <% end %>
+
 
   <%= yield %>
 
