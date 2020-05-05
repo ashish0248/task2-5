@@ -34,4 +34,18 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+# ユーザー検索
+  def self.search(keyword, search_name)
+      if search_name == "完全一致"
+        where(['name LIKE ?', "#{keyword}"])
+      elsif search_name == "部分一致"
+         where(['name LIKE ?', "%#{keyword}%"])
+      elsif search_name == "前方一致"
+        where(['name LIKE ?', "#{keyword}%"])
+      elsif search_name == "後方一致"
+        where(['name LIKE ?', "%#{keyword}"])
+      else
+      end
+  end
 end
+
