@@ -42,7 +42,6 @@
     </div>
   </body>
   <br>
-
          <!-- 検索機能 -->
         <% if user_signed_in? %>
          <%= form_tag(search_path, method: "get") do %>
@@ -53,7 +52,7 @@
           <%= select_tag :search_name, options_for_select([["完全一致", "完全一致"],["部分一致","部分一致"],["前方一致", "前方一致"],["後方一致","後方一致"]]) %>
           <%= submit_tag 'Search' %>
            <% end %>
-           <% end %>
+        <% end %>
 
 
   <%= yield %>

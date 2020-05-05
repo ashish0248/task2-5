@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'users/:id/followers' => 'relationships#new', as: 'new_relationship'
 
   get  'serched' => 'searches#search',  as: 'search'
-  get  'serches' => 'searches#index',  as: 'searchs'
+  get  'serch_book' => 'searches#index',  as: 'search_book'
+  get  'serche_user' => 'searches#new',  as: 'search_user'
+
 end
 
